@@ -1,53 +1,77 @@
-export default function Header() {
-  return (
-    <header
-      className="flex items-center justify-between px-10 py-6"
-      style={{ backgroundColor: "#062F33" }}
-    >
-      {/* LOGO */}
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
-      <div className="flex items-center">
+export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 w-full bg-black/80 backdrop-blur-md border-b border-white/10">
+      <div className="flex items-center justify-between px-4 sm:px-6 lg:px-10 py-4 lg:py-6">
+
+        {/* LOGO */}
         <a
           href="/"
-          className="text-white text-2xl md:text-3xl transition-opacity duration-300 hover:opacity-90"
-          style={{
-            fontFamily: "'Playfair Display', serif",
-            fontStyle: "italic",
-            letterSpacing: "0.5px",
-            textDecoration: "none",
-          }}
+          className="text-white text-xl sm:text-2xl lg:text-3xl font-semibold italic tracking-wide hover:opacity-90 transition-opacity"
+          style={{ fontFamily: "'Playfair Display', serif" }}
         >
           Faisal Qutbee
         </a>
+
+        {/* DESKTOP NAV */}
+        <nav className="hidden lg:flex gap-8 xl:gap-10 text-base xl:text-lg">
+          {["Home", "About", "Advisory", "Contact"].map((item) => (
+            <a
+              key={item}
+              href="#"
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              {item}
+            </a>
+          ))}
+        </nav>
+
+        {/* DESKTOP CTA */}
+        <button className="hidden md:block px-5 lg:px-7 py-2.5 rounded-lg bg-green-500 text-black font-semibold hover:bg-green-400 transition-all hover:scale-105">
+          Contact us
+        </button>
+
+        {/* MOBILE MENU BUTTON */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="lg:hidden p-2 text-white hover:opacity-80 transition-opacity"
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
       </div>
 
-
-      {/* NAV */}
-      <nav className="hidden md:flex gap-10 text-lg">
-        {["Home", "About", "Advisory", "Contact"].map((item) => (
-          <a
-            key={item}
-            href="#"
-            className="transition-colors duration-200"
-            style={{ color: "#B7D1D4" }}
-            onMouseEnter={(e) => (e.target.style.color = "#FFFFFF")}
-            onMouseLeave={(e) => (e.target.style.color = "#B7D1D4")}
-          >
-            {item}
-          </a>
-        ))}
-      </nav>
-
-      {/* CTA BUTTON */}
-      <button
-        className="px-6 py-2 rounded-full text-sm font-medium transition-all duration-300"
-        style={{
-          backgroundColor: "#6EE7B7",
-          color: "#062F33",
-        }}
+      {/* MOBILE MENU */}
+      <div
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        } bg-black border-t border-white/10`}
       >
-        Contact us
-      </button>
+        <nav className="flex flex-col px-4 py-4 space-y-3">
+          {["Home", "About", "Advisory", "Contact"].map((item) => (
+            <a
+              key={item}
+              href="#"
+              className="py-2 text-base text-gray-300 hover:text-white transition-colors border-b border-white/10"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item}
+            </a>
+          ))}
+
+          {/* MOBILE CTA */}
+          <button
+            className="mt-4 w-full px-6 py-3 rounded-lg bg-green-500 text-black font-semibold hover:bg-green-400 transition-all"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Contact us
+          </button>
+        </nav>
+      </div>
     </header>
   );
 }

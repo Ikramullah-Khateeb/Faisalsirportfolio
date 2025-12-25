@@ -1,9 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import faisal from "../assets/faisal.jfif";
-
-
-
+import hero from "../assets/faisal.jfif";
 
 export default function Hero() {
   useEffect(() => {
@@ -11,167 +8,111 @@ export default function Hero() {
   }, []);
 
   return (
-<section
-  className="relative w-full overflow-visible"
-  style={{ backgroundColor: "#062F33" }}
->
+    <section className="relative min-h-screen w-full overflow-hidden bg-black flex flex-col items-center py-12 md:py-20">
+      
+      {/* GREEN CENTER GLOW */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[300px] h-[300px] md:w-[600px] md:h-[600px] lg:w-[800px] lg:h-[800px] bg-green-500/20 rounded-full blur-[100px] md:blur-[150px]" />
+      </div>
 
-  {/* GREEN CENTER GLOW */}
-  <div
-    className="absolute inset-0 z-0 pointer-events-none"
-    style={{
-      backgroundImage:
-        "radial-gradient(circle at center, rgba(16,185,129,0.35), transparent 65%)",
-    }}
-  />
+      {/* CONTENT WRAPPER */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
 
-  {/* CONTENT WRAPPER */}
-  <div className="relative z-10">
-    {/* your existing section content here */}
-  </div>
-  <div className="custom-container pt-14 pb-20">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* LEFT CONTENT */}
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.4 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="flex-1 text-center lg:text-left max-w-xl"
+        >
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight">
+            Where Innovation Meets Ideas
+          </h1>
 
-      {/* LEFT */}
-<motion.div
-  initial={{ opacity: 0, y: 40 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.9, ease: "easeOut" }}
->
-<motion.h1
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: false, amount: 0.6 }}
-  transition={{ delay: 0.2, duration: 0.8 }}
-  className="text-4xl md:text-5xl xl:text-6xl font-semibold leading-tight text-white"
->
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 md:mb-8 leading-relaxed">
+            Helping businesses thrive with innovative digital strategies,
+            creative solutions, and measurable outcomes.
+          </p>
 
-    Where Innovation
-    <br /> Meets Ideas
-  </motion.h1>
+          {/* BUTTONS */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 md:px-8 py-3 md:py-4 bg-green-500 text-black font-semibold rounded-lg hover:bg-green-400 transition-colors text-sm md:text-base"
+            >
+              Book a call
+            </motion.button>
 
- <motion.p
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: false, amount: 0.6 }}
-  transition={{ delay: 0.4, duration: 0.8 }}
-  className="mt-6 max-w-lg text-base md:text-lg"
-  style={{ color: "#9FB8BB" }}
->
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 md:px-8 py-3 md:py-4 border-2 border-green-500 text-green-500 font-semibold rounded-lg hover:bg-green-500/10 transition-colors text-sm md:text-base"
+            >
+              Learn more
+            </motion.button>
+          </div>
 
-    Helping businesses thrive with innovative digital strategies,
-    creative solutions, and measurable outcomes.
-  </motion.p>
+          {/* STATS */}
+          <div className="hidden md:flex gap-8 mt-12">
+            <div>
+              <div className="text-3xl lg:text-4xl font-bold text-white">150+</div>
+              <div className="text-sm text-gray-400">Projects Completed</div>
+            </div>
+            <div>
+              <div className="text-3xl lg:text-4xl font-bold text-white">98%</div>
+              <div className="text-sm text-gray-400">Client Satisfaction</div>
+            </div>
+            <div>
+              <div className="text-3xl lg:text-4xl font-bold text-white">5+</div>
+              <div className="text-sm text-gray-400">Years Experience</div>
+            </div>
+          </div>
+        </motion.div>
 
-  {/* BUTTONS */}
-<motion.div
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: false, amount: 0.6 }}
-  transition={{ delay: 0.6, duration: 0.8 }}
-  className="flex gap-4 mt-10"
->
+        {/* RIGHT IMAGE SECTION */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.4 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="relative flex-1 flex items-center justify-center"
+        >
+          {/* ROTATING SQUARE */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] border-2 border-green-500/30 rounded-3xl"
+          />
 
+          {/* IMAGE */}
+          <motion.div
+            whileHover={{ scale: 1.05, rotate: 5 }}
+            transition={{ duration: 0.3 }}
+            className="relative w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] md:w-[300px] md:h-[300px] lg:w-[350px] lg:h-[350px] rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
+          >
+            <img
+              src={hero}
+              alt="Faisal Qutbee"
+              className="w-full h-full object-cover"
+            />
 
-    <button
-      className="px-7 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105"
-      style={{
-        backgroundColor: "#6EE7B7",
-        color: "#062F33",
-      }}
-    >
-      Book a call
-    </button>
+            {/* NAME OVERLAY */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4 md:p-6">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
+                Faisal Qutbee
+              </h3>
+              <p className="text-xs sm:text-sm md:text-base text-green-400">
+                Business Advisory & Strategy
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
 
-    <button
-      className="px-7 py-3 rounded-full backdrop-blur-md transition-all duration-300 text-white hover:scale-105"
-      style={{
-        backgroundColor: "rgba(255,255,255,0.12)",
-        border: "1px solid rgba(255,255,255,0.18)",
-      }}
-    >
-      Learn more
-    </button>
-  </motion.div>
-
-  {/* SLIDER — NOW CORRECT */}
-
-</motion.div>
-
-      {/* RIGHT IMAGE */}
-{/* RIGHT IMAGE */}
-<motion.div
-  className="relative flex justify-center items-center"
-  initial={{ opacity: 0, scale: 0.96 }}
-  whileInView={{ opacity: 1, scale: 1 }}
-  viewport={{ once: false, amount: 0.6 }}
-  transition={{ duration: 1 }}
->
-
-  {/* CONTINUOUS CLOCKWISE MOVING SQUARE */}
-  <motion.div
-    className="absolute w-[460px] h-[460px] rounded-[42px]"
-    animate={{
-      rotate: 360,
-    }}
-    transition={{
-      duration: 20,       // slow & premium
-      repeat: Infinity,
-      ease: "linear",     // IMPORTANT for smooth rotation
-    }}
-    style={{
-      background:
-        "linear-gradient(135deg, rgba(110,231,183,0.18), rgba(6,47,51,0.65))",
-      border: "1px solid rgba(110,231,183,0.35)",
-      boxShadow: "0 0 120px rgba(110,231,183,0.18)",
-    }}
-  />
-
-  {/* IMAGE — MOVES ONLY ON HOVER */}
-  <motion.div
-    className="relative z-10 w-[420px] h-[420px] rounded-[36px] overflow-hidden"
-    whileHover={{
-      y: -18,
-      scale: 1.04,
-    }}
-    transition={{
-      type: "spring",
-      stiffness: 120,
-      damping: 12,
-    }}
-    style={{
-      border: "2px solid rgba(110,231,183,0.6)",
-      boxShadow: "0 35px 80px rgba(0,0,0,0.55)",
-    }}
-  >
-    <img
-      src={faisal}
-      alt="Faisal"
-      className="w-full h-full object-cover"
-    />
-  </motion.div>
-
-  {/* NAME OVERLAY */}
-  <div
-    className="absolute bottom-6 left-6 z-20 px-6 py-3 rounded-2xl backdrop-blur-md"
-    style={{
-      backgroundColor: "rgba(0,0,0,0.55)",
-      border: "1px solid rgba(255,255,255,0.18)",
-    }}
-  >
-    <p className="text-white font-semibold text-sm">
-      Faisal Qutbee
-    </p>
-    <p className="text-xs mt-0.5" style={{ color: "#6EE7B7" }}>
-      Business Advisory & Strategy
-    </p>
-  </div>
-</motion.div>
-
-
-    </div>
-  </div>
-</section>
-
+      {/* SUBTLE DIVIDER */}
+      <div className="w-full h-[2px] bg-white/20 mt-12" />
+    </section>
   );
 }
